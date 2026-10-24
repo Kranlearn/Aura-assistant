@@ -1,0 +1,14 @@
+# Dépendances Node.js
+node_modules/
+dist/
+
+# Compilations Rust / Tauri
+src-tauri/target/
+
+# Logs et fichiers système
+*.log
+.DS_Store
+Thumbs.db
+
+# Fichiers d'environnement potentiels
+.env
