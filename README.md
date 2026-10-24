@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔮 Aura Assistant
+#  Aura Assistant
 
   <p align="center">
     <strong>Un assistant de bureau transparent, frameless et ultra-léger conçu pour les développeurs.</strong>
