@@ -23,13 +23,13 @@
 
 ## 🚀 À propos du projet
 
-**Aura** est un overlay moderne en *Glassmorphism* qui se superpose discrètement sur votre espace de travail. Il combine la puissance d'un backend natif en Rust avec la légèreté d'une interface web moderne.
+**Aura** is a modern *Glassmorphism* overlay that sits discreetly on top of your workspace. It combines the power of a native Rust backend with the lightness of a modern web interface.
 
-### ✨ Fonctionnalités actuelles
-- 💎 **Interface Glassmorphic** : Design sombre avec effet de verre dépoli et transparence.
-- 🪟 **Frameless & Always-on-Top** : Fenêtre sans bordure système, positionnable au-dessus de vos applications.
-- 🖐️ **Draggable** : Déplacement fluide directement à la souris.
-- ⚡ **Performance Native** : Propulsé par Tauri pour une empreinte mémoire minimale.
+###  Current Features
+- 💎 **Glassmorphic Interface**: Dark design with a frosted glass effect and transparency.
+- 🪟 **Frameless & Always-on-Top**: Borderless window that can be positioned on top of your applications.
+- 🖐️ **Draggable**: Smooth dragging directly with the mouse.
+- ⚡ **Native Performance**: Powered by Tauri for minimal memory footprint.
 
 ---
 
