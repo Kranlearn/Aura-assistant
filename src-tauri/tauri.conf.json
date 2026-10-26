@@ -5,31 +5,24 @@
   "identifier": "com.tauri.dev",
   "build": {
     "frontendDist": "../",
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build"
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
   },
   "app": {
     "windows": [
-  {
-    "title": "Aura",
-    "width": 380,
-    "height": 600,
-    "transparent": true,
-    "decorations": false,
-    "alwaysOnTop": true,
-    "resizable": true
-  }
-],
+      {
+        "title": "Aura",
+        "width": 390,
+        "height": 580,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true
+      }
+    ],
     "security": {
       "csp": null
     }
   },
-"build": {
-  "beforeDevCommand": "",
-  "beforeBuildCommand": "",
-  "frontendDist": "../"
-},
-
   "bundle": {
     "active": true,
     "targets": "all",

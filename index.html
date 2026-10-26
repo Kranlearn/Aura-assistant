@@ -1,140 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aura - Assistant Routine & Sommeil</title>
-  
-  <!-- Polices Google Fonts -->
+  <title>Aura Assistant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Feuilles de style -->
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css" />
 
-  <!-- Overlay d'arrière-plan avec effets de lumière -->
-  <div class="background-overlay">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-  </div>
-
-  <!-- Conteneur principal Glassmorphism -->
-  <div class="app-container">
-    
-    <!-- En-tête de l'application -->
+<div class="app-container">
+    <!-- En-tête -->
     <header class="app-header">
       <div class="brand">
-        <span class="status-indicator"></span>
-        <h1>Aura</h1>
+        <div class="status-dot"></div>
+        <span>AURA // v0.2</span>
       </div>
-      <div class="current-time" id="clock">00:00:00</div>
+      <div class="header-controls">
+        <button class="btn-icon" id="closeBtn" title="Fermer">×</button>
+      </div>
     </header>
 
-    <!-- Section Mascotte Interactive -->
+    <!-- Mascotte & Dialogue Interactif -->
     <section class="mascot-section">
-      <div class="mascot-wrapper">
-        <!-- Bulle de dialogue -->
-        <div class="speech-bubble" id="speechBubble">
-          <p id="mascotMessage">Bonsoir ! Prêt à organiser ta soirée et optimiser ton sommeil ?</p>
-        </div>
-
-        <!-- Mascotte Vectorielle SVG -->
-        <div class="mascot-avatar" id="mascotAvatar">
-          <svg viewBox="0 0 100 100" class="mascot-svg">
-            <defs>
-              <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.8"/>
-                <stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <!-- Aura lumineuse autour du corps -->
-            <circle cx="50" cy="50" r="45" fill="url(#auraGlow)" class="aura-pulse"/>
-            <!-- Corps du robot/mascotte -->
-            <circle cx="50" cy="50" r="32" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2"/>
-            <!-- Écran/Visage -->
-            <rect x="28" y="32" width="44" height="28" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
-            <!-- Yeux animés -->
-            <circle cx="40" cy="46" r="3.5" fill="#38bdf8" id="eyeLeft" class="eye"/>
-            <circle cx="60" cy="46" r="3.5" fill="#38bdf8" id="eyeRight" class="eye"/>
-          </svg>
-        </div>
+      <div class="speech-bubble" id="speechBubble">
+        Salut ! Clique sur moi pour discuter ou change de mode ci-dessous.
+      </div>
+      <div class="mascot-avatar" id="mascotAvatar" title="Clique-moi !">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" fill="#1e1b4b" stroke="#818cf8" stroke-width="3"/>
+          <rect x="25" y="32" width="50" height="32" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5"/>
+          <circle cx="38" cy="48" r="5" fill="#38bdf8" id="leftEye"/>
+          <circle cx="62" cy="48" r="5" fill="#38bdf8" id="rightEye"/>
+        </svg>
       </div>
     </section>
 
-      
-    <!-- Navigation / Météo du Mode -->
+    <!-- Sélecteur d'onglets interactif -->
     <nav class="mode-selector">
-      <button class="mode-btn active" data-mode="work">🧠 Travail</button>
-      <button class="mode-btn" data-mode="sleep">🌙 Sommeil</button>
+      <button class="mode-btn active" data-target="workPanel">🧠 Travail</button>
+      <button class="mode-btn" data-target="sleepPanel">🌙 Sommeil</button>
     </nav>
 
-    <!-- Panneau Mode Travail / Pomodoro -->
-    <main class="panel" id="workPanel">
-      <div class="timer-display">
-        <span id="timerMinutes">25</span>:<span id="timerSeconds">00</span>
-      </div>
-      <div class="timer-controls">
-        <button id="startTimerBtn" class="btn btn-primary">Démarrer</button>
-        <button id="resetTimerBtn" class="btn btn-secondary">Réinitialiser</button>
-      </div>
-    </main>
-
-    <section>
-    <div class="aura-container">
-        <!-- En-tête -->
-        <div class="aura-header">
-            <div class="aura-title">
-                <div class="aura-dot"></div>
-                AURA // v0.1
-            </div>
-            <div class="aura-actions">
-                <button class="btn-close" id="close-btn">&times;</button>
-            </div>
+    <!-- Contenu dynamique -->
+    <div class="panel-container">
+      
+      <!-- Panel Travail -->
+      <div class="panel active" id="workPanel">
+        <div class="timer-display" id="timerDisplay">25:00</div>
+        <div class="timer-controls">
+          <button class="btn btn-primary" id="startTimer">Démarrer</button>
+          <button class="btn btn-secondary" id="resetTimer">Reset</button>
         </div>
+        <div class="console-box" id="consoleLog">
+          > Système prêt. En attente d'action...
         </div>
-</section>
-
-    <!-- Panneau Mode Sommeil / Routine Soir -->
-    <main class="panel hidden" id="sleepPanel">
-      <div class="sleep-tracker">
-        <h3>Routine de Coucher</h3>
-        <p class="subtitle">Objectif d'endormissement : <strong>23:00</strong></p>
-        
-        <ul class="checklist">
-          <li>
-            <label><input type="checkbox" id="check1"> Couper le code et les écrans intenses</label>
-          </li>
-          <li>
-            <label><input type="checkbox" id="check2"> Verre d'eau & tisane / thé</label>
-          </li>
-          <li>
-            <label><input type="checkbox" id="check3"> Lumières tamisées</label>
-          </li>
-        </ul>
       </div>
-    </main>
 
-    <!-- Pied de page avec actions vocales -->
-    <footer class="app-footer">
-      <button id="speakBtn" class="btn btn-icon" title="Écouter le conseil">
-        🔊 Parler
-      </button>
-      <div class="aura-body">
-            <div class="chat-display">
-                Système initialisé avec succès.<br>
-                Prêt pour les commandes...
-            </div>
+      <!-- Panel Sommeil -->
+      <div class="panel" id="sleepPanel">
+        <div class="routine-card">
+          <h3>Routine de Coucher (Cible : 23:00)</h3>
+          <ul class="checklist">
+            <li><label><input type="checkbox"> Couper les écrans intenses</label></li>
+            <li><label><input type="checkbox"> Préparer tisane / thé au miel</label></li>
+            <li><label><input type="checkbox"> Baisser la luminosité</label></li>
+          </ul>
         </div>
-    </footer>
+      </div>
 
+    </div>
   </div>
-
+  
   <!-- Scripts JS -->
-  <script src="js/mascot.js"></script>
-  <script src="js/routine.js"></script>
-  <script src="js/app.js"></script>
-</body>
+  <script src="./js/mascot.js"></script>
+  <script src="./js/routine.js"></script>
+  <script src="./js/app.js"></script>
+  </head>
 </html>
