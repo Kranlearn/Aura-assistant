@@ -1,3 +1,14 @@
+<p align="center">
+  <!-- Tu peux mettre ton image ou ton logo ici -->
+  <h1 align="center">✨ AURA Assistant</h1>
+  <p align="center">Un assistant de bureau intelligent et vitreux propulsé par Tauri.</p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/badge/Tauri-v2-blue?style=for-the-badge&logo=tauri" alt="Tauri">
+    <img src="https://img.shields.io/badge/Status-En%20développement-purple?style=for-the-badge" alt="Status">
+  </p>
+</p>
+
 <div align="center">
 
 #  Aura Assistant
